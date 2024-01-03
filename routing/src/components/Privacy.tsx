@@ -1,39 +1,59 @@
+// Privacy.jsx
 import React from 'react';
-
+import starryNightImage from './images/download (1).jpg';
+import sunflowers from './images/download (2).jpg';
+import irises from './images/download (3).jpg';
+import {Link} from "react-router-dom";
 const Privacy = () => {
+
     return (
         <div>
-            <h2>My Resume</h2>
-            <p>
-                I am a skilled and passionate React developer with expertise in building modern web
-                applications. Below is a brief overview of my skills and experiences.
-            </p>
+            <h2>Vincent van Gogh's Painting Collection</h2>
 
-            <h3>Skills:</h3>
-            <ul>
-                <li>React.js development</li>
-                <li>JavaScript (ES6+)</li>
-                <li>HTML5 and CSS3</li>
-                {/* Add more skills as needed */}
-            </ul>
-
-            <h3>Experience:</h3>
-            <p>
-                <strong>Company ABC - React Developer</strong>
-            </p>
-            <p>
-                In my role at Company ABC, I played a key role in developing and maintaining React-based
-                applications, ensuring high performance and responsiveness.
-            </p>
-            {/* Add more experiences as needed */}
-
-            <h3>Education:</h3>
-            <p>
-                <strong>University XYZ - Bachelor's Degree in Computer Science</strong>
-            </p>
-            <p>
-                I graduated with a solid foundation in computer science and a focus on web development.
-            </p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <h3>The Starry Night</h3>
+                    </td>
+                    <td>
+                        <img src={starryNightImage} alt="picture"/>
+                    </td>
+                    <td>
+                        <Link to={`/painting/tss`}>View</Link>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Sunflowers</h3>
+                    </td>
+                    <td>
+                        <img src={sunflowers} alt="picture"/>
+                    </td>
+                    <td>
+                        <Link to={`/painting/s`}>View</Link>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Irises</h3>
+                    </td>
+                    <td>
+                        <img src={irises} alt="picture"/>
+                    </td>
+                    <td>
+                        <Link to={`/painting/i`}>View</Link>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     );
 };
