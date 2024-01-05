@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода</title>
+</head>
+<body>
+
+<div id="tabs">
+    <button class="tablinks" onclick="openTab(event, 'today')">Сьогодні</button>
+    <button class="tablinks" onclick="openTab(event, '5-day-forecast')">5-day forecast</button>
+</div>
+
+<div id="today" class="tabcontent">
+    <h1>Погода сьогодні</h1>
+
+    <!-- Блок з короткими відомостями -->
+    <div id="weather-info">
+        <p id="date"></p>
+        <img id="weather-icon" alt="Weather Icon">
+        <p id="description"></p>
+        <p id="temperature"></p>
+        <p id="feels-like"></p>
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+        <p id="day-length"></p>
+    </div>
+
+    <!-- Блок з щочотирьохгодинним прогнозом -->
+    <div id="hourly-forecast">
+        <h2>Щочотирьохгодинний прогноз на сьогодні</h2>
+        <table id="hourly-forecast-table">
+            <thead>
+                <tr>
+                    <th>Час</th>
+                    <th>Іконка</th>
+                    <th>Опис</th>
+                    <th>Температура</th>
+                    <th>Відчувається як</th>
+                    <th>Вітер</th>
+                </tr>
+            </thead>
+            <tbody id="hourly-forecast-info"></tbody>
+        </table>
+    </div>
+
+    <!-- Блок з прогнозом для найближчих міст -->
+    <div id="nearby-cities">
+        <h2>Прогноз для найближчих міст</h2>
+        <div id="nearby-cities-info"></div>
+    </div>
+</div>
+
+<div id="5-day-forecast" class="tabcontent">
+    <h1>5-day forecast</h1>
+
+    <!-- Блок з коротким прогнозом на кожен з п'яти днів -->
+    <div id="short-forecast-info"></div>
+
+    <!-- Блок з погодинним прогнозом для обраного дня -->
+    <div id="hourly-forecast-info"></div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        getWeather();
+    });
+
+    function openTab(evt, tabName) {
+        const tabcontent = document.getElementsByClassName('tabcontent');
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = 'none';
+        }
+
+        const tablinks = document.getElementsByClassName('tablinks');
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(' active', '');
+        }
+
+        document.getElementById(tabName).style.display = 'block';
+        evt.currentTarget.className += ' active';
+
+        // Виклик функції отримання погоди при виборі вкладки
+        if (tabName === '5-day-forecast') {
+            getWeather();
+        }
+    }
+</script>
+
+<style>
+    /* Стилі для вкладок */
+    #tabs {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    .tablinks {
+        background-color: #ddd;
+        float: left;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .tablinks:hover {
+        background-color: #ddd;
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 20px;
+    }
+</style>
+
+</body>
+</html>
